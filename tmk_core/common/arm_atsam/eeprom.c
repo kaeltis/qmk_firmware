@@ -18,10 +18,7 @@
 #include "core_cm4.h"
 #include "component/nvmctrl.h"
 
-#ifndef EEPROM_SIZE
-#    include "eeconfig.h"
-#    define EEPROM_SIZE (((EECONFIG_SIZE + 3) / 4) * 4)  // based off eeconfig's current usage, aligned to 4-byte sizes, to deal with LTO
-#endif
+#define EEPROM_SIZE 1024
 
 __attribute__((aligned(4))) static uint8_t buffer[EEPROM_SIZE];
 volatile uint8_t *SmartEEPROM8 = (uint8_t *) SEEPROM_ADDR;
